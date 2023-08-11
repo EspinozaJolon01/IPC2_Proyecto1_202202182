@@ -1,4 +1,7 @@
 
+from lectura import lectura
+
+lecturas = lectura()
 
 def datos_personales():
     print("")
@@ -8,6 +11,23 @@ def datos_personales():
     print(">Ingeniere en ciesncas y sistemas")
     print(">4to semestre")
 
+def lectura_archivo_xml():
+    print("")
+    print("--------------------------------------")
+    ruta = input("Ingrese el nombre: ")
+    print("iniciando proceso")
+    lecturas.lectura_xml(ruta)
+
+def prueba():
+    print("")
+    print("--------------------------------------")
+    lecturas.prueba()
+
+def prueba2():
+    print("")
+    print("--------------------------------------")
+    lecturas.prube_binario()
+    
 
 def menu_princial():
     print("")
@@ -25,13 +45,13 @@ def menu_princial():
     opcion = int(input("Ingrese una opcion: "))
 
     if opcion == 1:
-        print("opcion1")
+        lectura_archivo_xml()
         menu_princial()
     elif opcion == 2:
-        print("opcion2")
+        prueba()
         menu_princial()
     elif opcion == 3:
-        print("opcion1")
+        prueba2()
         menu_princial()
     elif opcion == 4:
         datos_personales()
