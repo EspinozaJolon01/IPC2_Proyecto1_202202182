@@ -19,20 +19,42 @@ class lista_datos():
     def recorrdio(self):
         aux = self.primero
         while aux != None:
-            print("tiempo:", aux.datos.amplitud,"Amplitud: ", aux.datos.frecuencia, "Valor: ", aux.datos.valor)
+            print("Matriz: ", aux.datos.nombre)
+            print("tiempo:", aux.datos.tiempo,"Amplitud: ", aux.datos.amplitud, "Valor: ", aux.datos.valor)
             aux = aux.siguiente
 
     def binario(self):
+        valor = 0
         aux = self.primero
         while aux != None:
-            valor_actual = int(aux.datos.valor)
+            valor_actual = aux.datos.valor
             if valor_actual != 0:
                 nuevo_valor = valor_actual
-                nuevo_valor == 1
-                print("Valor: ", str(nuevo_valor))
+                nuevo_valor == valor
+                print("Valor: ", nuevo_valor)
                 aux = aux.siguiente
             else:
-                print("Valor: ",  str(valor_actual))
+                print("Valor: ",  valor_actual)
                 aux = aux.siguiente
             
+    def verificar_nombre(self,nombre):
+        pass
+
+
+    def actualizar_datos(self, nombre, nuevo_tiempo, nuevo_amplitud, nuevo_valor):
+        aux = self.primero
+        while aux:
+            if nombre == aux.datos.nombre:
+                aux.datos.tiempo = nuevo_tiempo
+                aux.datos.amplitud = nuevo_amplitud
+                aux.datos.valor = nuevo_valor
+                print("Actualizar matriz")
+                return
+            aux = aux.siguiente
+        
+        print("Sin ninguna modificación")
+
+            
+
+
             

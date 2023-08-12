@@ -1,6 +1,8 @@
 class Datos:
 
-    def __init__(self,amplitud,frecuencia,valor):
+    def __init__(self,nombre,tiempo,amplitud,valor):
+        self.nombre = nombre
         self.amplitud = amplitud
-        self.frecuencia = frecuencia
+        self.tiempo = tiempo
         self.valor = valor
+
