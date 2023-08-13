@@ -1,14 +1,11 @@
 <senales>
-    <senal nombre="Prueba 1" t="2" A="2">
+    <senal nombre="Prueba 1" t="140" A="2">
         <dato t="1" A="1">2</dato>
-        <dato t="1" A="2">3</dato>
+        <dato t="1" A="2">0</dato>
     </senal>
-    <senal nombre="Prueba 2122" t="2" A="2">
-        <dato t="1" A="1">5</dato>
-        <dato t="1" A="2">5</dato>
+    <senal nombre="Prueba" t="1" A="2">
+        <dato t="1" A="1">34</dato>
+        <dato t="1" A="2">330</dato>
     </senal>
-    <senal nombre="Prueba 1" t="2" A="2">
-        <dato t="1" A="1">676</dato>
-        <dato t="1" A="2">1111</dato>
-    </senal>
+
 </senales>
