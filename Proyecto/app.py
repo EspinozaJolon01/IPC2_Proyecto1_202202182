@@ -16,6 +16,8 @@ def lectura_archivo_xml():
     print("--------------------------------------")
     ruta = input("Ingrese el nombre: ")
     print("iniciando proceso")
+    print("--------------------------------------")
+    print("")
     lecturas.lectura_xml(ruta)
 
 def matriz_normal():
@@ -27,6 +29,9 @@ def matriz_binario():
     print("")
     print("--------------------------------------")
     lecturas.prueba()
+
+def prubea_matriz():
+    lecturas.imprimir_matriz()
     
 
 def menu_princial():
@@ -57,7 +62,7 @@ def menu_princial():
         datos_personales()
         menu_princial()
     elif opcion == 5:
-        print("opcion5")
+        prubea_matriz()
         menu_princial()
     elif opcion == 6:
         print("opcion6")
