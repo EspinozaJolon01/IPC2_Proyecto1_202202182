@@ -6,11 +6,8 @@ lista = lista_datos()
 
 class lectura:
 
-    def __init__(self) :
-        self.tiempo = ""
-        self.amplitud = ""
 
-    def lectura_xml(self,ruta):
+    def lectura_xml(self, ruta):
         try:
             xml_file = open(f"{ruta}.xml")
             if xml_file.readable():
@@ -18,81 +15,69 @@ class lectura:
                 lst_doc = xml_data.findall("senal")
                 
                 for doc in lst_doc:
-                    #lista.verificar_nombre(doc.get('nombre'))
                     print(f"Nombre: {doc.get('nombre')}")
                     nombre = doc.get('nombre')
-                    print(f"Tiempo: {doc.get('t')}")
-                    self.tiempo = doc.get('t')
-                    tiempos = int(self.tiempo)
-                    print(f"Amplitud: {doc.get('A')}")
-                    self.amplitud =doc.get('A')
-                    amplitudes = int(self.amplitud)
+                    tiempo = int(doc.get('t'))
+                    amplitud = int(doc.get('A'))
+
                     print("------------------------")
 
-                    if int(self.tiempo) > 0 and int(self.tiempo) <=130:
-                        if int(self.amplitud) > 0 and int(self.amplitud) <=130:
-                            lst_dato = doc.findall("dato")
+                    if 0 < tiempo <= 3600 and 0 < amplitud <= 130:
+                        for t in range(1, tiempo + 1):
+                            for A in range(1, amplitud + 1):
+                                valor_encontrado = False
+                                for dato in doc.findall("dato"):
+                                    dato_t = int(dato.get('t'))
+                                    dato_A = int(dato.get('A'))
 
-                            for dato in lst_dato:
-                                t = dato.get('t')  
-                                A = dato.get('A')  
-                                valor = dato.text
+                                    if dato_t == t and dato_A == A:
+                                        valor = dato.text
+                                        valor_nulo = 0 if valor is None or valor.strip() == "" else int(valor)
+                                        valor_binario = 1 if valor_nulo != 0 else 0
+                                        valor_encontrado = True
+                                        break
 
-                                self.validar_salto_de_linea(t,A)
-
-                                if valor is None or valor.strip() == "":
-                                    valor_nulo = 0
-                                    agregar = str(valor_nulo)
+                                if valor_encontrado:
+                                    print(f"Coordenada t={t}, A={A}, Valor={valor_nulo}")
+                                    dato_encontrado = Datos(t,A,valor_nulo,valor_binario)
                                 else:
-                                    valor_nulo = int(valor)
-                                    agregar = str(valor_nulo)
+                                    print(f"Falta valor en coordenada t={t}, A={A}")
+                                    dato_encontrado = Datos(t,A,"0","0")
+                                
+                                nodo_final = dato_encontrado
+                                lista.agregar_lista_de_xml(nodo_final)
 
-                                valor_binario = 1 if valor_nulo != 0 else 0
-                                agrega_nodo = str(valor_binario)
-
-                                datos_xml = Datos(t,A,agregar,agrega_nodo)
-                                lista.agregar_lista_de_xml(datos_xml)
-                        #print(f"t: {t}, A: {A}, Valor: {valor}")
-                            print("proceso terminado")
+                        print("Proceso terminado")
                         
-                        else: 
-                            print("amplitud se pasa de su limite de 0 a 130")
                     else:
-                        print("tiempo se pasa de su limite de 0 a 130")
-
-                
+                        print("El tiempo o la amplitud están fuera de los límites.")
+                xml_file.close()
             else:
                 print(False)
         except Exception as rr:
-            print("Error por terminal",rr)
-        finally:
-            pass
+            print("Error por terminal", rr)
 
     def validar_salto_de_linea(self, t, A):
         tiempos = int(self.tiempo)
         amplitudes = int(self.amplitud)
-        encontrado = False  # Usamos esto para saber si se encontró el dato
+        encontrado = False  
 
         for i in range(1, tiempos + 1):
             for j in range(1, amplitudes + 1):
                 if int(t) == i and int(A) == j:
-                    encontrado = True  # Se encontró el dato, cambiamos el valor
-                    break  # Salir del bucle interno
-            if encontrado:  # Si se encontró el dato, salir del bucle externo también
+                    encontrado = True  
+                    break  
+            if encontrado:  
                 break
 
-        # Verificar si se encontró el dato o no
+        
         if encontrado:
             print("Todo bien")
         else:
             print(f"Falta un dato en t: {t}, A: {A}")
 
-
-                
-
-
-    def prueba(self):
+    def listado_binario(self):
         lista.recorrdio_binario()
 
-    def matriz(self):
+    def lista_matriz(self):
         lista.recorrdio()

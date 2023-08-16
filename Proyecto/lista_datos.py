@@ -1,6 +1,6 @@
 from nodo import nodo
 
-class lista_datos():
+class lista_datos:
 
     def __init__(self) :
         self.primero = None

@@ -23,12 +23,12 @@ def lectura_archivo_xml():
 def matriz_normal():
     print("")
     print("--------------------------------------")
-    lecturas.matriz()
+    lecturas.lista_matriz()
 
 def matriz_binario():
     print("")
     print("--------------------------------------")
-    lecturas.prueba()
+    lecturas.listado_binario()
 
 def prubea_matriz():
     lecturas.imprimir_matriz()
