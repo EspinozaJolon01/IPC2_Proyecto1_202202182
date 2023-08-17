@@ -25,12 +25,17 @@ class lista_datos:
             else:
                 print("")
 
+    def generar_grafica(self,nombre,timpo,amplitud):
+        pass
 
     def recorrdio(self):
         aux = self.primero
+        
         while aux != None:
+            print("Nombre: ",aux.datos.nombre)
             print("tiempo:", aux.datos.tiempo,"Amplitud: ", aux.datos.amplitud, "Valor: ", aux.datos.valor)
-            aux = aux.siguiente 
+            aux = aux.siguiente
+        
     
     def recorrdio_binario(self):
         aux = self.primero

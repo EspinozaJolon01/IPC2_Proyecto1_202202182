@@ -1,11 +1,14 @@
 import xml.etree.ElementTree as ET
 from Datos import Datos
 from lista_datos import lista_datos
+from tkinter.filedialog import askopenfilename
 
 lista = lista_datos()
 
 class lectura:
 
+
+    
 
     def lectura_xml(self, ruta):
         try:
@@ -39,10 +42,10 @@ class lectura:
 
                                 if valor_encontrado:
                                     print(f"Coordenada t={t}, A={A}, Valor={valor_nulo}")
-                                    dato_encontrado = Datos(t,A,valor_nulo,valor_binario)
+                                    dato_encontrado = Datos(nombre,t,A,valor_nulo,valor_binario)
                                 else:
                                     print(f"Falta valor en coordenada t={t}, A={A}")
-                                    dato_encontrado = Datos(t,A,"0","0")
+                                    dato_encontrado = Datos(nombre,t,A,"0","0")
                                 
                                 nodo_final = dato_encontrado
                                 lista.agregar_lista_de_xml(nodo_final)
@@ -69,8 +72,6 @@ class lectura:
                     break  
             if encontrado:  
                 break
-
-        
         if encontrado:
             print("Todo bien")
         else:
