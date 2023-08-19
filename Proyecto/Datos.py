@@ -1,9 +1,7 @@
 class Datos:
 
-    def __init__(self,nombre,tiempo,amplitud,valor,cambio_dato):
+    def __init__(self,nombre,tiempo,amplitud,lista_valor):
         self.nombre = nombre
         self.amplitud = amplitud
         self.tiempo = tiempo
-        self.valor = valor
-        self.cambio_dato = cambio_dato
-
+        self.lista_valor = lista_valor

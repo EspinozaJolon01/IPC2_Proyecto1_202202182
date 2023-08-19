@@ -1,16 +1,19 @@
 import xml.etree.ElementTree as ET
 from Datos import Datos
 from lista_datos import lista_datos
-from tkinter.filedialog import askopenfilename
+from Celda_dato import Celda_dato
+from lista_celdas import lista_celda
 
-lista = lista_datos()
+
+
+
+lista_datos_temp = lista_datos()
 
 class lectura:
 
-
-    
-
     def lectura_xml(self, ruta):
+
+        
         try:
             xml_file = open(f"{ruta}.xml")
             if xml_file.readable():
@@ -18,17 +21,20 @@ class lectura:
                 lst_doc = xml_data.findall("senal")
                 
                 for doc in lst_doc:
+                    print("-------------------------------------")
                     print(f"Nombre: {doc.get('nombre')}")
                     nombre = doc.get('nombre')
                     tiempo = int(doc.get('t'))
                     amplitud = int(doc.get('A'))
 
-                    print("------------------------")
+                    print("-------------------------------------")
+                    print("")
 
                     if 0 < tiempo <= 3600 and 0 < amplitud <= 130:
                         for t in range(1, tiempo + 1):
                             for A in range(1, amplitud + 1):
                                 valor_encontrado = False
+                                lista_celda_temp = lista_celda()
                                 for dato in doc.findall("dato"):
                                     dato_t = int(dato.get('t'))
                                     dato_A = int(dato.get('A'))
@@ -42,13 +48,17 @@ class lectura:
 
                                 if valor_encontrado:
                                     print(f"Coordenada t={t}, A={A}, Valor={valor_nulo}")
-                                    dato_encontrado = Datos(nombre,t,A,valor_nulo,valor_binario)
+                                    dato_encontrado = Celda_dato(t,A,valor_nulo,valor_binario)
+                                    lista_celda_temp.insertar_datos(dato_encontrado)
                                 else:
                                     print(f"Falta valor en coordenada t={t}, A={A}")
-                                    dato_encontrado = Datos(nombre,t,A,"0","0")
+                                    dato_encontrado = Celda_dato(t,A,"0","0")
+                                    lista_celda_temp.insertar_datos(dato_encontrado)
                                 
-                                nodo_final = dato_encontrado
-                                lista.agregar_lista_de_xml(nodo_final)
+                                
+                                lista_datos_temp.insertar_dato(Datos(nombre,tiempo,amplitud,lista_celda_temp))
+                        
+                        print("-------------------------------------")
 
                         print("Proceso terminado")
                         
@@ -77,8 +87,10 @@ class lectura:
         else:
             print(f"Falta un dato en t: {t}, A: {A}")
 
-    def listado_binario(self):
-        lista.recorrdio_binario()
+    def listados(self):
+        lista_datos_temp.recorrer_e_imprimir_listas()
+        
+        
 
     def lista_matriz(self):
-        lista.recorrdio()
+        pass

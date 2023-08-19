@@ -4,17 +4,16 @@ class lista_datos:
 
     def __init__(self) :
         self.primero = None
-        self.ultimo = None
 
-    def estado_lista(self):
-        return self.primero == None
 
-    def agregar_lista_de_xml(self,dato):
-        if self.estado_lista() == True:
-            self.primero = self.ultimo = nodo(dato)
-        else:
-            aux = self.ultimo
-            self.ultimo = aux.siguiente = nodo(dato)
+    def insertar_dato(self,datos):
+        if self.primero is None:
+            self.primero=nodo(datos=datos)
+            return
+        aux=self.primero
+        while aux.siguiente:
+            aux=aux.siguiente
+        aux.siguiente=nodo(datos=datos)
 
     def verificar_nombre(self,nombre):
         aux = self.primero
@@ -25,24 +24,29 @@ class lista_datos:
             else:
                 print("")
 
-    def generar_grafica(self,nombre,timpo,amplitud):
-        pass
 
-    def recorrdio(self):
-        aux = self.primero
+    def recorrer_e_imprimir_listas(self):
+        print("")
+        print("")
+
         
-        while aux != None:
-            print("Nombre: ",aux.datos.nombre)
-            print("tiempo:", aux.datos.tiempo,"Amplitud: ", aux.datos.amplitud, "Valor: ", aux.datos.valor)
-            aux = aux.siguiente
+        nombre_ultima_matriz = None 
         
-    
-    def recorrdio_binario(self):
         aux = self.primero
         while aux != None:
-            print("tiempo:", aux.datos.tiempo,"Amplitud: ", aux.datos.amplitud, "Valor: ", aux.datos.cambio_dato)
-            aux = aux.siguiente 
-            
+            if aux.datos.nombre != nombre_ultima_matriz:
+                print("-------------------------------------")
+                print("Nombre:", aux.datos.nombre, ", tiempo:", aux.datos.tiempo, ", Amplitud:", aux.datos.amplitud)
+                print("-------------------------------------")
+                nombre_ultima_matriz = aux.datos.nombre  
+                
+            aux.datos.lista_valor.recorrer_e_imprimir_listas()
+            aux = aux.siguiente    
+        print("-------------------------------------")
+        print("")
+
+
+
 
 
             

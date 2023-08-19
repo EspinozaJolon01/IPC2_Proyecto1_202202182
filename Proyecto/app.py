@@ -16,40 +16,33 @@ class app:
         print(">Jose Luis Espinoza Jolon")
         print(">202202182")
         print(">Introduccion a la Programacion y computacion 2 seccion D")
-        print(">Ingeniere en ciesncas y sistemas")
+        print(">Ingeniere en ciencias y sistemas")
         print(">4to semestre")
 
     def nombre_archivo_xml(self):
         print("")
         print("--------------------------------------")
         self.ruta = input("Ingrese el nombre: ")
-        if path.exists(self.ruta+".xml") == False:
+        if path.exists(self.ruta+".xml") == False: #verifica que la ruta esta exista
             print("No encontrado")
-        
+
         print("--------------------------------------")
         print("")
     
     def lectura_archivo(self):
         print("")
         print("--------------------------------------")
-        lecturas.lectura_xml(self.ruta)
         print("iniciando proceso")
+        lecturas.lectura_xml(self.ruta)
         print("--------------------------------------")
         print("")
             
-
-    def matriz_normal(self):
+    def matriz_recorrer(self):
         print("")
         print("--------------------------------------")
-        lecturas.lista_matriz()
+        lecturas.listados()
 
-    def matriz_binario(self):
-        print("")
-        print("--------------------------------------")
-        lecturas.listado_binario()
 
-    def prubea_matriz(self):
-        lecturas.imprimir_matriz()
         
 
     def menu_princial(self):
@@ -74,13 +67,13 @@ class app:
             self.lectura_archivo()
             self.menu_princial()
         elif opcion == 3:
-            self.matriz_normal()
+            self.matriz_recorrer()
             self.menu_princial()
         elif opcion == 4:
             self.datos_personales()
             self.menu_princial()
         elif opcion == 5:
-            self.prubea_matriz()
+            print("opcion5")
             self.menu_princial()
         elif opcion == 6:
             print("opcion6")

@@ -1,5 +1,5 @@
 class nodo:
 
-    def __init__(self,datos) :
+    def __init__(self,datos=None,siguiente=None) :
         self.datos = datos
-        self.siguiente = None
+        self.siguiente = siguiente
