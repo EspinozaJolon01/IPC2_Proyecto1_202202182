@@ -1,4 +1,4 @@
-class Celda_dato:
+class Dato:
 
     def __init__(self,posicion_t,posicion_A,valor,valor_binario):
         self.posicion_t = posicion_t

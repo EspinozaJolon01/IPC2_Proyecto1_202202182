@@ -1,13 +1,13 @@
 import xml.etree.ElementTree as ET
-from Datos import Datos
+from Senal import Senal
+from lista_senal import lista_senal
+from Dato import Dato
 from lista_datos import lista_datos
-from Celda_dato import Celda_dato
-from lista_celdas import lista_celda
 
 
 
 
-lista_datos_temp = lista_datos()
+lista_senal_temp = lista_senal()
 
 class lectura:
 
@@ -30,11 +30,12 @@ class lectura:
                     print("-------------------------------------")
                     print("")
 
+
                     if 0 < tiempo <= 3600 and 0 < amplitud <= 130:
                         for t in range(1, tiempo + 1):
                             for A in range(1, amplitud + 1):
                                 valor_encontrado = False
-                                lista_celda_temp = lista_celda()
+                                lista_datos_temp = lista_datos()
                                 for dato in doc.findall("dato"):
                                     dato_t = int(dato.get('t'))
                                     dato_A = int(dato.get('A'))
@@ -45,18 +46,20 @@ class lectura:
                                         valor_binario = 1 if valor_nulo != 0 else 0
                                         valor_encontrado = True
                                         break
+                                    
+                                    
 
                                 if valor_encontrado:
                                     print(f"Coordenada t={t}, A={A}, Valor={valor_nulo}")
-                                    dato_encontrado = Celda_dato(t,A,valor_nulo,valor_binario)
-                                    lista_celda_temp.insertar_datos(dato_encontrado)
+                                    dato_encontrado = Dato(t,A,valor_nulo,valor_binario)
+                                    lista_datos_temp.insertar_datos(dato_encontrado)
                                 else:
                                     print(f"Falta valor en coordenada t={t}, A={A}")
-                                    dato_encontrado = Celda_dato(t,A,"0","0")
-                                    lista_celda_temp.insertar_datos(dato_encontrado)
+                                    dato_encontrado = Dato(t,A,"0","0")
+                                    lista_datos_temp.insertar_datos(dato_encontrado)
                                 
                                 
-                                lista_datos_temp.insertar_dato(Datos(nombre,tiempo,amplitud,lista_celda_temp))
+                                lista_senal_temp.insertar_dato(Senal(nombre,tiempo,amplitud,lista_datos_temp))
                         
                         print("-------------------------------------")
 
@@ -88,9 +91,9 @@ class lectura:
             print(f"Falta un dato en t: {t}, A: {A}")
 
     def listados(self):
-        lista_datos_temp.recorrer_e_imprimir_listas()
+        lista_senal_temp.recorrer_e_imprimir_listas()
         
         
 
-    def lista_matriz(self):
-        pass
+    def generar_grafica(self):
+        lista_senal_temp.grafica_mi_lista_original()

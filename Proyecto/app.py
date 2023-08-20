@@ -32,7 +32,6 @@ class app:
     def lectura_archivo(self):
         print("")
         print("--------------------------------------")
-        print("iniciando proceso")
         lecturas.lectura_xml(self.ruta)
         print("--------------------------------------")
         print("")
@@ -40,9 +39,14 @@ class app:
     def matriz_recorrer(self):
         print("")
         print("--------------------------------------")
+        print("iniciando proceso")
         lecturas.listados()
 
-
+    def generador_grafi(self):
+        print("")
+        print("--------------------------------------")
+        lecturas.generar_grafica()
+        print("")
         
 
     def menu_princial(self):
@@ -73,7 +77,7 @@ class app:
             self.datos_personales()
             self.menu_princial()
         elif opcion == 5:
-            print("opcion5")
+            self.generador_grafi()
             self.menu_princial()
         elif opcion == 6:
             print("opcion6")
