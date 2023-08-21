@@ -27,14 +27,27 @@ class lista_senal:
             aux = aux.siguiente
 
         if verificar:
-            actual=self.primero
-            while actual != None:
-                actual.Senal.lista_datos.generar_grafica(actual.Senal.nombre,str(actual.Senal.amplitud),str(actual.Senal.tiempo))
+                aux.Senal.lista_datos.generar_grafica(aux.Senal.nombre,str(aux.Senal.amplitud),str(aux.Senal.tiempo))
             #actual.carcel.lista_patrones_celdas.recorrer_e_imprimir_lista()
-                actual=actual.siguiente
+                aux=aux.siguiente
         else:
             print("no se encontro en la lista")
-                
+    
+
+    def actualizar_matriz(self,nombre,t,A,valor,vinario_tem):
+        aux = self.primero
+        verificar = False
+
+        while aux:
+            if aux.Senal.nombre == nombre:
+                verificar = True
+                break
+            aux = aux.siguiente
+        
+        if verificar:
+            print("Actualizar")
+            aux.Senal.lista_datos.actualizar_datos(t,A,valor,vinario_tem)
+
 
 
 

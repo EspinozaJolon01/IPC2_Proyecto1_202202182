@@ -11,7 +11,7 @@
         <dato t="2" A="1">5</dato>
         <dato t="2" A="2">5</dato>
     </senal>
-        <senal nombre="Prueba 1" t="2" A="3">
+        <senal nombre="Prueba 1" t="3" A="3">
         <dato t="1" A="1">1</dato>
         <dato t="1" A="2">1</dato>
         <dato t="2" A="1">1</dato>

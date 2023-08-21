@@ -54,7 +54,7 @@ class lectura:
                                         valor_encontrado = True
                                         break
                                     
-                                    
+                                #self.lista_senal_temp.actualizar_matriz(nombre,t,A,valor_nulo,valor_binario)    
 
                                 if valor_encontrado:
                                     print(f"Coordenada t={t}, A={A}, Valor={valor_nulo}")
