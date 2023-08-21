@@ -1,5 +1,6 @@
 
 from lectura import lectura
+
 import os.path as path
 
 lecturas = lectura()
@@ -8,6 +9,7 @@ class app:
 
     def __init__(self):
         self.ruta = ""
+        
 
 
     def datos_personales(self):
@@ -45,7 +47,19 @@ class app:
     def generador_grafi(self):
         print("")
         print("--------------------------------------")
-        lecturas.generar_grafica()
+        nombre =  input("ingrese el nombre de la matriz que quiere graficar: ")
+        lecturas.generar_grafica(nombre)
+        print("")
+
+    def verificar_nombre(self):
+        nombre = input("ingrese nombre de matriz: ")
+        lecturas.porbrar_matriz(nombre)
+    
+    def inicializar_sistema(self):
+        print("")
+        print("--------------------------------------")
+        print("Elimando la lista")
+        lecturas.eliminar_lista()
         print("")
         
 
@@ -80,7 +94,7 @@ class app:
             self.generador_grafi()
             self.menu_princial()
         elif opcion == 6:
-            print("opcion6")
+            self.inicializar_sistema()
             self.menu_princial()
         elif opcion == 7:
             print("Saliendo del programa, vuelva pronto")

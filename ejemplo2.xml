@@ -1,0 +1,8 @@
+<senales>
+    <senal nombre="holaa" t="2" A="3">
+        <dato t="1" A="1">4</dato>
+        <dato t="1" A="2">7</dato>
+        <dato t="2" A="1">1</dato>
+        <dato t="2" A="2">3</dato>
+    </senal>
+</senales>
