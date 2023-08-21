@@ -1,9 +1,12 @@
 
 from lectura import lectura
 
+
+
 import os.path as path
 
 lecturas = lectura()
+
 
 class app:
 

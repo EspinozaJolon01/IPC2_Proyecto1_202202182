@@ -23,6 +23,7 @@ class lectura:
             if xml_file.readable():
                 xml_data = ET.fromstring(xml_file.read())
                 lst_doc = xml_data.findall("senal")
+                self.lista_senal_temp = lista_senal()
                 
                 for doc in lst_doc:
                     print("-------------------------------------")
@@ -34,11 +35,13 @@ class lectura:
                     print("-------------------------------------")
                     print("")
 
+                    self.lista_datos_temp = lista_datos()
 
                     if 0 < tiempo <= 3600 and 0 < amplitud <= 130:
                         for t in range(1, tiempo + 1):
                             for A in range(1, amplitud + 1):
                                 valor_encontrado = False
+
                                 
                                 for dato in doc.findall("dato"):
                                     dato_t = int(dato.get('t'))
@@ -61,11 +64,15 @@ class lectura:
                                     print(f"Falta valor en coordenada t={t}, A={A}")
                                     dato_encontrado = Dato(t,A,"0","0")
                                 self.lista_datos_temp.insertar_datos(dato_encontrado)
+
+                        self.lista_senal_temp.insertar_dato(Senal(nombre,tiempo,amplitud,self.lista_datos_temp))
+                
+                    
                     else:
                         print("El tiempo o la amplitud están fuera de los límites.")            
                                 
-                    self.lista_senal_temp.insertar_dato(Senal(nombre,tiempo,amplitud,self.lista_datos_temp))
-                        
+                    
+    
                     print("-------------------------------------")
 
                     print("Proceso terminado")
