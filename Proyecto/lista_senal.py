@@ -34,20 +34,21 @@ class lista_senal:
             print("no se encontro en la lista")
     
 
-    def actualizar_matriz(self,nombre,t,A,valor,vinario_tem):
+    def actualizar_matriz(self,nombre):
         aux = self.primero
         verificar = False
 
         while aux:
             if aux.Senal.nombre == nombre:
                 verificar = True
+                print(aux.Senal.nombre)
                 break
             aux = aux.siguiente
         
         if verificar:
-            print("Actualizar")
-            aux.Senal.lista_datos.actualizar_datos(t,A,valor,vinario_tem)
-
+            
+            self.primero = self.primero.siguiente
+            del aux
 
 
 

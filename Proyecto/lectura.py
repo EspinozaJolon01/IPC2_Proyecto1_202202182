@@ -54,7 +54,7 @@ class lectura:
                                         valor_encontrado = True
                                         break
                                     
-                                #self.lista_senal_temp.actualizar_matriz(nombre,t,A,valor_nulo,valor_binario)    
+                                
 
                                 if valor_encontrado:
                                     print(f"Coordenada t={t}, A={A}, Valor={valor_nulo}")
@@ -63,6 +63,8 @@ class lectura:
                                 else:
                                     print(f"Falta valor en coordenada t={t}, A={A}")
                                     dato_encontrado = Dato(t,A,"0","0")
+                                    
+                                self.lista_senal_temp.actualizar_matriz(nombre)    
                                 self.lista_datos_temp.insertar_datos(dato_encontrado)
 
                         self.lista_senal_temp.insertar_dato(Senal(nombre,tiempo,amplitud,self.lista_datos_temp))
@@ -109,8 +111,6 @@ class lectura:
     def generar_grafica(self,nombre):
         self.lista_senal_temp.verificar_nombre(nombre)
 
-    def porbrar_matriz(self,nombre):
-        self.lista_senal_temp.verificar_nombre(nombre)
     
     def eliminar_lista(self):
         self.lista_senal_temp.eliminar_lista_nodo()
