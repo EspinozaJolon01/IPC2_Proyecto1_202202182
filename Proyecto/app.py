@@ -1,11 +1,13 @@
 
 from lectura import lectura
+from lista_datos import lista_datos
 
 
 
 import os.path as path
 
 lecturas = lectura()
+lista = lista_datos()
 
 
 class app:
@@ -37,7 +39,9 @@ class app:
     def lectura_archivo(self):
         print("")
         print("--------------------------------------")
+        
         lecturas.lectura_xml(self.ruta)
+        
         print("--------------------------------------")
         print("")
             
@@ -51,7 +55,18 @@ class app:
         print("")
         print("--------------------------------------")
         nombre =  input("ingrese el nombre de la matriz que quiere graficar: ")
-        lecturas.generar_grafica(nombre)
+        print("--------------------------------------")
+        print("1. Grafica normal")
+        print("2. Grafica reducida")
+        opcion = int(input("Ingrese una opcion: "))
+        if opcion == 1:
+            nombre_de_grafica = input("Ingrese el nombre que quiere guarda la matriz: ")
+            lecturas.generar_grafica(nombre,nombre_de_grafica)
+        elif opcion == 2:
+            print("opcion")
+        else:
+            print("opcion no valida")
+        
         print("")
 
     def verificar_nombre(self):
@@ -79,7 +94,9 @@ class app:
         print("5. Generar grafica")
         print("6. Inicialiar sistema")
         print("7. Salida")
+        print("--------------------------------------")
         opcion = int(input("Ingrese una opcion: "))
+        print("--------------------------------------")
 
         if opcion == 1:
             self.nombre_archivo_xml()

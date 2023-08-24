@@ -6,7 +6,7 @@
         <dato t="2" A="1">1</dato>
         <dato t="2" A="2">3</dato>
     </senal>
-    <senal nombre="de" t="2" A="3">
+    <senal nombre="fff" t="2" A="3">
         <dato t="1" A="1">5</dato>
         <dato t="1" A="2">5</dato>
         <dato t="2" A="1">5</dato>
@@ -18,7 +18,7 @@
         <dato t="2" A="1">1</dato>
         <dato t="2" A="2">2</dato>
     </senal>
-    <senal nombre="fff" t="4" A="3">
+    <senal nombre="Prueba 1" t="4" A="3">
         <dato t="1" A="1">1</dato>
         <dato t="1" A="2">1</dato>
         <dato t="2" A="1">1</dato>

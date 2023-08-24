@@ -6,6 +6,14 @@ class lista_datos:
 
     def __init__(self):
         self.primero = None
+    
+
+    def vacia(self):
+        if self.primero == None:
+            return True
+        else:
+            return 
+
 
     def insertar_datos(self,Dato):
         if self.primero is None:
@@ -33,15 +41,16 @@ class lista_datos:
             aux.Dato.valor = valor
             aux.Dato.valor_binario = vinario
             aux = aux.siguiente
+    
 
 
-    def generar_grafica(self,nombre,amplitud,tiempo):
+    def generar_grafica(self,nombre,amplitud,tiempo,nombre_matriz):
         f = open('bb.dot','w')
         # configuraciones del grafo
         text ="""
             digraph G {"Amplitud="""+amplitud+"""","Tiempo="""+tiempo+""""->" """+nombre+ """" bgcolor="skyblue" style="filled"
             subgraph cluster1 {fillcolor="blue:blue4" style="filled"
-            node [shape=circle fillcolor="Cyan:Teal" style="radial" gradientangle=180]
+            node [ fillcolor="Cyan:Teal" style="radial" gradientangle=180]
             a0 [ label=<
             <TABLE border="10" cellspacing="10" cellpadding="10" style="rounded" bgcolor="navy:darkblue" gradientangle="315">\n"""
         aux = self.primero
@@ -66,11 +75,28 @@ class lista_datos:
         text+=""" </TR></TABLE>>];
                 }
                 }\n"""
+        
         f.write(text)
         f.close()
         os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin'
-        os.system('dot -Tpng bb.dot -o grafica.png')
+        os.system(f"dot -Tpng bb.dot -o {nombre_matriz}.png")
         print("terminado")
+
+
+    def __iter__(self):
+        self.actual = self.primero
+        return self
+
+    def __next__(self):
+        if self.actual is not None:
+            valor_actual = self.actual
+            self.actual = self.actual.siguiente
+            return valor_actual
+        else:
+            raise StopIteration
+
+
+
 
 
 

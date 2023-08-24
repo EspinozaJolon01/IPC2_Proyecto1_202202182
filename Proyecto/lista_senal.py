@@ -5,6 +5,7 @@ class lista_senal:
 
     def __init__(self):
         self.primero = None
+        self.ultimo = None
 
 
     def insertar_dato(self,Senal):
@@ -16,7 +17,7 @@ class lista_senal:
             aux=aux.siguiente
         aux.siguiente=nodo_senal(Senal=Senal)
 
-    def verificar_nombre(self,nombre):
+    def generar_grafia(self,nombre,nombre_matriz):
         aux = self.primero
         verificar = False
 
@@ -27,7 +28,7 @@ class lista_senal:
             aux = aux.siguiente
 
         if verificar:
-                aux.Senal.lista_datos.generar_grafica(aux.Senal.nombre,str(aux.Senal.amplitud),str(aux.Senal.tiempo))
+                aux.Senal.lista_datos.generar_grafica(aux.Senal.nombre,str(aux.Senal.amplitud),str(aux.Senal.tiempo),nombre_matriz)
             #actual.carcel.lista_patrones_celdas.recorrer_e_imprimir_lista()
                 aux=aux.siguiente
         else:
@@ -35,21 +36,21 @@ class lista_senal:
     
 
     def actualizar_matriz(self,nombre):
+        dato = None
         aux = self.primero
-        verificar = False
 
         while aux:
             if aux.Senal.nombre == nombre:
-                verificar = True
-                print(aux.Senal.nombre)
-                break
-            aux = aux.siguiente
+                if dato is None:
+                    self.primero = aux.siguiente
+                else:
+                    dato.siguiente = aux.siguiente  #realizamos la eliminacion
+                    print("Se actualizo....")
+                aux = aux.siguiente
+            else:
+                dato = aux   #acutalizamos los punteros
+                aux = aux.siguiente
         
-        if verificar:
-            
-            self.primero = self.primero.siguiente
-            del aux
-
 
 
     def recorrer_e_imprimir_listas(self):
