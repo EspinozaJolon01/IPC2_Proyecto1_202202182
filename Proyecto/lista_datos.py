@@ -113,7 +113,7 @@ class lista_datos:
         lista_grupo.agregar_nodo(agrupado(sentinela_de_filas,recolector_patron))
         # devolvermos la lista llena con los patrones
         return lista_grupo
-
+    """
     def devolver_cadena_del_grupo(self,grupo):
         string_resultado=""
         string_temporal=""
@@ -139,9 +139,35 @@ class lista_datos:
                 buffer=""
         #devolvemos el string resultado
         return string_resultado
+    """
+    def devolver_cadena_del_grupo(self,grupo):
+            string_resultado=""
+            string_temporal=""
+            buffer=""
+            # viene un parametro llamado grupo, es un string con este formato "1,2"
+            # recorremos caracter por caracter
+            for digito in grupo:
+            #si es digito
+                if digito.isdigit():
+                    #añadimos al buffer
+                    buffer+=digito
+                else:
+                    # si no es buffer, lo vaciamos
+                    string_temporal=""
+                    #recorremos la lista y recuperamos los valores para este grupo
+                    actual = self.primero
+                    while actual != None:
+                        # si encontramos coincidencia del digito y el nivel , obtenemos su valor
+                        if actual.Dato.posicion_t==int(buffer):
+                            string_temporal+=str(actual.Dato.valor)+","
+                        actual = actual.siguiente
 
+                    string_resultado+=string_temporal+"\n"
+                    buffer=""
+            #devolvemos el string resultado
+            return string_resultado
 
-
+    
 
     def __iter__(self):
         self.actual = self.primero

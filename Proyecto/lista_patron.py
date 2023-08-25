@@ -25,3 +25,6 @@ class lista_patron:
             print(" Grupo: ",actual.patron.grupo_patron,"Cadena-grupo: ",actual.patron.cadena_patron)
             actual = actual.siguiente
         print("--------------------------------------")
+    
+    def get_tamanio(self):
+        return self.contador_patron

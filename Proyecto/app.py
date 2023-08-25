@@ -1,6 +1,8 @@
 
 from lectura import lectura
 from lista_datos import lista_datos
+#from lista_suma import lista_suma
+
 
 
 
@@ -8,6 +10,7 @@ import os.path as path
 
 lecturas = lectura()
 lista = lista_datos()
+#sumaa = lista_suma()
 
 
 class app:
@@ -82,7 +85,9 @@ class app:
         print("")
     
     def prueba_calcular_matriz3(self):
-        lecturas.patrones_prueba()
+        #lista_sum.recorrer()
+        print("----------------------")
+        #sumaa.imprimir_resultados()
         
 
     def menu_princial(self):

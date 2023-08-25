@@ -5,15 +5,18 @@ class lista_agrupada:
     def __init__(self):
         self.primero = None
         self.ultimo = None
+        self.tamanio = 1
     
     def agregar_nodo(self,agrupado):
         if self.primero is None:
             self.primero=nodo_agrupado(agrupado=agrupado)
+            self.tamanio += 1
             return
         aux=self.primero
         while aux.siguiente:
             aux=aux.siguiente
         aux.siguiente=nodo_agrupado(agrupado=agrupado)
+        self.tamanio += 1
     
     def __iter__(self):
         self.actual = self.primero
@@ -26,6 +29,8 @@ class lista_agrupada:
             return valor_actual
         else:
             raise StopIteration
+        
+
 
 
     def recorer(self):
@@ -78,6 +83,8 @@ class lista_agrupada:
                         buffer=""
             resultado+=temp_niveles+"--"
         return resultado  # Devuelve el resultado final con la agrupación de niveles
+
+    
         
 
 

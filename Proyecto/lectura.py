@@ -75,6 +75,7 @@ class lectura:
 
                         self.lista_senal_temp.insertar_dato(Senal(nombre,tiempo,amplitud,self.lista_datos_temp,lista_temporal_grupos,lista_temporal_patrones))
                         #self.agregar_cadena(tiempo,self.lista_datos_temp)
+                        self.lista_senal_temp.calcular_los_patrones(nombre)
                 
                     
                     else:

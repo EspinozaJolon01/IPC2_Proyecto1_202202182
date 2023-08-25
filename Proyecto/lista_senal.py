@@ -1,5 +1,7 @@
 from nodo_senal import nodo_senal
 from patron import patron
+from lista_sumado import lista_sumando
+from dato_sumado import dato_sumado
 
 
 class lista_senal:
@@ -109,15 +111,39 @@ class lista_senal:
                     elif digito =="-" and buffer!="":
                         cadena_grupo=actual.Senal.lista_datos.devolver_cadena_del_grupo(buffer)
                         actual.Senal.listra_patrones.insertar_dato(patron=patron(buffer,cadena_grupo))
+                        
+                        self.vamos(actual.Senal.lista_datos,actual.Senal.amplitud,buffer,actual.Senal.listra_patrones.get_tamanio())
+                        
                         buffer=""
                     else:
                         buffer=""
-                actual.Senal.listra_patrones.recorrer_e_imprimir_lista()
+                #actual.Senal.listra_patrones.recorrer_e_imprimir_lista()
 
                 
                 return
             actual=actual.siguiente
         print ("No se encontró la carcel")
+
+    def vamos(self, lista_datos, amplitud, grupo,num_grupo):
+        suma = 0
+        lista_suma = lista_sumando()
+        contador = 0
+        string_resultado = ""
+        tiempo_sin_comas = grupo.replace(",","")
+        for i in range(1, int(amplitud)+1):
+            for datos_lista in lista_datos:
+                if str(datos_lista.Dato.posicion_t) in grupo and int(datos_lista.Dato.posicion_A) == i:
+                    suma = suma + int(datos_lista.Dato.valor)
+                    contador += 1
+                    if contador == len(tiempo_sin_comas):
+                        string_resultado+=str(suma)+","
+                        lista_suma.insertar_dato(dato_sumado(datos_lista.Dato.posicion_A,datos_lista.Dato.posicion_t,suma,num_grupo))
+                
+            contador = 0
+            suma = 0
+        lista_suma.recorrer()
+            #print("PROBANDOOOOOOOOOOOOO")
+            #print(string_resultado)
     
     
             
