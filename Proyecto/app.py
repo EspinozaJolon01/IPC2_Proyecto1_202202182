@@ -76,9 +76,13 @@ class app:
     def inicializar_sistema(self):
         print("")
         print("--------------------------------------")
+        self.ruta = ""
         print("Elimando la lista")
         lecturas.eliminar_lista()
         print("")
+    
+    def prueba_calcular_matriz3(self):
+        lecturas.patrones_prueba()
         
 
     def menu_princial(self):
@@ -95,20 +99,26 @@ class app:
         print("6. Inicialiar sistema")
         print("7. Salida")
         print("--------------------------------------")
-        opcion = int(input("Ingrese una opcion: "))
+        opcion = int(input("->Ingrese una opcion: "))
         print("--------------------------------------")
 
         if opcion == 1:
             self.nombre_archivo_xml()
             self.menu_princial()
         elif opcion == 2:
-            self.lectura_archivo()
+            if self.ruta != "":
+                self.lectura_archivo()
+            else:
+                print("->Debes cargar el archivo")    
             self.menu_princial()
         elif opcion == 3:
-            self.matriz_recorrer()
+            if self.ruta != "":
+                self.matriz_recorrer()
+            else:
+                print("->Debes cargar el archivo")
             self.menu_princial()
         elif opcion == 4:
-            self.datos_personales()
+            self.prueba_calcular_matriz3()
             self.menu_princial()
         elif opcion == 5:
             self.generador_grafi()
@@ -117,9 +127,9 @@ class app:
             self.inicializar_sistema()
             self.menu_princial()
         elif opcion == 7:
-            print("Saliendo del programa, vuelva pronto")
+            print("->Saliendo del programa, vuelva pronto")
         else:
-            print("Opcion invalidad, vuelve a intentarlo...")
+            print("->Opcion invalidad, vuelve a intentarlo...")
             self.menu_princial()
     
 app_llamar = app()

@@ -6,9 +6,6 @@ class lista_agrupada:
         self.primero = None
         self.ultimo = None
     
-
-
-
     def agregar_nodo(self,agrupado):
         if self.primero is None:
             self.primero=nodo_agrupado(agrupado=agrupado)
@@ -29,35 +26,60 @@ class lista_agrupada:
             return valor_actual
         else:
             raise StopIteration
-        
 
-
-    def verificar_agrupar(self):
-        aux = self.primero
-        patron_anterior = None
-        grupo_num = 0
-
-        while aux:
-            patron_actual = aux.agrupado.patron
-
-            if patron_actual == patron_anterior:
-                if grupo_num == 0:
-                    grupo_num += 1
-                    print("Grupo", grupo_num, ":", patron_actual)
-                print(patron_actual)
-            else:
-                grupo_num = 0
-            
-            patron_anterior = patron_actual
-            aux = aux.siguiente
 
     def recorer(self):
         aux = self.primero
-
         while aux:
-            print("prueba")
-            print(aux.agrupado.patron)
+            print()
+            print("Nivel: ",aux.agrupado.tiempo,"caneda-patron",aux.agrupado.patron)
             aux = aux.siguiente
+
+    def eliminar(self,tiempo):
+        actual = self.primero
+        anterior = None
+        while actual and actual.agrupado.tiempo != tiempo:
+            anterior=actual
+            actual = actual.siguiente
+        if anterior is None:
+            self.primero = actual.siguiente
+            actual.siguiente = None
+        elif actual:
+            anterior.siguiente = actual.siguiente
+            actual.siguiente = None
+
+    def encontrar_coincidencias(self):
+        print("")
+        resultado = ""  # Inicializa un string vacío para almacenar el resultado final  
+        # Bucle principal que se ejecuta mientras haya nodos en la lista
+        while self.primero:
+            actual = self.primero  # Comienza desde el primer nodo en la lista
+            temp_string = ""  # String temporal para almacenar niveles coincidentes
+            temp_niveles = ""  # Lista temporal para almacenar niveles      
+        # Bucle interno para recorrer la lista de nodos y buscar coincidencias
+        
+            while actual:
+                if actual.agrupado.patron == self.primero.agrupado.patron:
+                    temp_niveles+=(str(actual.agrupado.tiempo))+","  # Agrega el nivel a la lista temporal
+                # Si no hay nodo siguiente, elimina el primer nodo
+                actual=actual.siguiente
+            # Terminamos la iteración, quiere decir que ya tenemos la coincidencias:
+            buffer=""
+            #print(temp_niveles)
+            for digito in temp_niveles:
+                if digito.isdigit():
+                    buffer+=digito
+                #Quiere decir que viene una coma
+                else:
+                    if buffer!="":
+                        self.eliminar(int(buffer))
+                        buffer=""
+                    else:
+                        buffer=""
+            resultado+=temp_niveles+"--"
+        return resultado  # Devuelve el resultado final con la agrupación de niveles
+        
+
 
 
 

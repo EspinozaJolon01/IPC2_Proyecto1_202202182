@@ -4,12 +4,8 @@ from Dato import Dato
 from lista_senal import lista_senal
 from Dato import Dato
 from lista_datos import lista_datos
-
-
-#listas
-
 from lista_agrupada import lista_agrupada
-from agrupado import agrupado
+from lista_patron import lista_patron
 
 
 
@@ -44,6 +40,8 @@ class lectura:
                     print("")
 
                     self.lista_datos_temp = lista_datos()
+                    lista_temporal_grupos = lista_agrupada()
+                    lista_temporal_patrones = lista_patron()
 
                     if 0 < tiempo <= 3600 and 0 < amplitud <= 130:
                         for t in range(1, tiempo + 1):
@@ -70,12 +68,12 @@ class lectura:
                                     
                                 self.lista_senal_temp.actualizar_matriz(nombre)    
                                 self.lista_datos_temp.insertar_datos(dato_encontrado)
-                                #self.lista_datos_temp.matriza_agrupada(t,valor_binario)
+                                
                                 
                                 
                             
 
-                        self.lista_senal_temp.insertar_dato(Senal(nombre,tiempo,amplitud,self.lista_datos_temp))
+                        self.lista_senal_temp.insertar_dato(Senal(nombre,tiempo,amplitud,self.lista_datos_temp,lista_temporal_grupos,lista_temporal_patrones))
                         #self.agregar_cadena(tiempo,self.lista_datos_temp)
                 
                     
@@ -112,7 +110,7 @@ class lectura:
         else:
             print(f"Falta un dato en t: {t}, A: {A}")
     
-    
+    """
     def agregar_cadena(self, tiempos, lista_dato):
         lista_temp = lista_agrupada()
 
@@ -131,16 +129,15 @@ class lectura:
             
             lista_d = agrupado(t, agrupar)
             lista_temp.agregar_nodo(lista_d)
-        print("----------------------")
         lista_temp.recorer()
-        print("----------------------")
-        lista_temp.verificar_agrupar()
+    """
         
 
 
 
 
-
+    def patrones_prueba(self):
+        self.lista_senal_temp.calcular_los_patrones("Prueba 1")
 
 
 
