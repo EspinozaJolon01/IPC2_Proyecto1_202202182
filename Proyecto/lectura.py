@@ -6,6 +6,7 @@ from Dato import Dato
 from lista_datos import lista_datos
 from lista_agrupada import lista_agrupada
 from lista_patron import lista_patron
+from lista_sumado import lista_sumando
 
 
 
@@ -42,6 +43,9 @@ class lectura:
                     self.lista_datos_temp = lista_datos()
                     lista_temporal_grupos = lista_agrupada()
                     lista_temporal_patrones = lista_patron()
+                    lista_temporal_suma = lista_sumando()
+                    
+                    
 
                     if 0 < tiempo <= 3600 and 0 < amplitud <= 130:
                         for t in range(1, tiempo + 1):
@@ -66,16 +70,19 @@ class lectura:
                                     print(f"Falta valor en coordenada t={t}, A={A}")
                                     dato_encontrado = Dato(t,A,"0","0")
                                     
-                                self.lista_senal_temp.actualizar_matriz(nombre)    
+                                
                                 self.lista_datos_temp.insertar_datos(dato_encontrado)
                                 
                                 
-                                
-                            
-
-                        self.lista_senal_temp.insertar_dato(Senal(nombre,tiempo,amplitud,self.lista_datos_temp,lista_temporal_grupos,lista_temporal_patrones))
+                        self.lista_senal_temp.actualizar_matriz(nombre)
+                        self.lista_senal_temp.insertar_dato(Senal(nombre,tiempo,amplitud,self.lista_datos_temp,lista_temporal_grupos,lista_temporal_patrones,lista_temporal_suma))
+                        self.lista_senal_temp.calcular_los_patrones(nombre,lista_temporal_suma)
+                        self.lista_senal_temp.actualizar_tem(lista_temporal_suma,nombre)
+                        #self.lista_senal_temp.recorrer_e_imprimir_listas()
                         #self.agregar_cadena(tiempo,self.lista_datos_temp)
-                        self.lista_senal_temp.calcular_los_patrones(nombre)
+                        
+                        
+                        
                 
                     
                     else:
@@ -153,6 +160,12 @@ class lectura:
     
     def eliminar_lista(self):
         self.lista_senal_temp.eliminar_lista_nodo()
+    
+    def grafica_sumados(self):
+        self.lista_senal_temp.grafica_mi_sumados()
 
+
+    def crear_xml(self,nombre):
+        self.lista_senal_temp.generar_archivo_xml(nombre)
 
     

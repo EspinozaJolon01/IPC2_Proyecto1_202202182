@@ -84,10 +84,19 @@ class app:
         lecturas.eliminar_lista()
         print("")
     
+    def prueba_grafica(self):
+        lecturas.grafica_sumados()
+    
     def prueba_calcular_matriz3(self):
         #lista_sum.recorrer()
         print("----------------------")
         #sumaa.imprimir_resultados()
+    def crear_xml(self):
+        print("")
+        print("--------------------------------------")
+        nombre_arhivo = input("ingrese el nombre para su arhivo: ")
+        print("Generando archivo...")
+        lecturas.crear_xml(nombre_arhivo)
         
 
     def menu_princial(self):
@@ -118,12 +127,12 @@ class app:
             self.menu_princial()
         elif opcion == 3:
             if self.ruta != "":
-                self.matriz_recorrer()
+                self.crear_xml()
             else:
                 print("->Debes cargar el archivo")
             self.menu_princial()
         elif opcion == 4:
-            self.prueba_calcular_matriz3()
+            self.matriz_recorrer()
             self.menu_princial()
         elif opcion == 5:
             self.generador_grafi()

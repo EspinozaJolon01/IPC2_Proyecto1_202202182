@@ -47,7 +47,7 @@ class lista_datos:
 
     def generar_grafica(self,nombre,amplitud,tiempo,nombre_matriz):
         f = open('bb.dot','w')
-        # configuraciones del grafo
+
         text ="""
             digraph G {"Amplitud="""+amplitud+"""","Tiempo="""+tiempo+""""->" """+nombre+ """" bgcolor="skyblue" style="filled"
             subgraph cluster1 {fillcolor="blue:blue4" style="filled"
@@ -55,19 +55,19 @@ class lista_datos:
             a0 [ label=<
             <TABLE border="10" cellspacing="10" cellpadding="10" style="rounded" bgcolor="navy:darkblue" gradientangle="315">\n"""
         aux = self.primero
-        sentinela_de_filas=aux.Dato.posicion_t #iniciaria en 1
+        sentinela_de_filas=aux.Dato.posicion_t 
         fila_iniciada=False
         while aux != None:
-            # Si mi fila actual es diferente a la que viene
+
             if sentinela_de_filas!=aux.Dato.posicion_t:
-                #print(sentinela_de_filas,actual.celda.nivel,"hola")
+
                 sentinela_de_filas=aux.Dato.posicion_t
                 fila_iniciada=False
-                # Cerramos la fila
+
                 text+="""</TR>\n"""  
             if fila_iniciada==False:
                 fila_iniciada=True
-                #Abrimos la fila
+
                 text+="""<TR>"""  
                 text+="""<TD border="3"  bgcolor="lavender" gradientangle="315">"""+str(aux.Dato.valor)+"""</TD>\n"""
             else:
@@ -84,87 +84,59 @@ class lista_datos:
         print("terminado")
     
 
-# método para devolver los patrones por nivel
     def devolver_patrones_por_nivel(self,lista_grupo):
         actual = self.primero
-        sentinela_de_filas=actual.Dato.posicion_t #iniciaria en 1
+        sentinela_de_filas=actual.Dato.posicion_t 
         fila_iniciada=False
         recolector_patron=""
         while actual != None:
-        # si hay cambio de fila entramos al if
+
             if  sentinela_de_filas!=actual.Dato.posicion_t:
-                # fila iniciada se vuelve false, por que se acaba la fila
+
                 fila_iniciada=False
-                # ya que terminamos la fila, podemos guardar los patrones
+
                 lista_grupo.agregar_nodo(agrupado(sentinela_de_filas,recolector_patron))
                 recolector_patron=""
-                # actualizamos el valor de la fila (nivel)
+
                 sentinela_de_filas=actual.Dato.posicion_t
-            # si fila iniciada es false, quiere decir que acaba de terminar fila y debemos empezar una nueva
+
             if fila_iniciada==False:
                 fila_iniciada=True
-                #Recolectamos el valor, ya que estamos en la fila
+
                 recolector_patron+=str(actual.Dato.valor_binario)+"-"
             else:
-                #Recolectamos el valor, ya que estamos en la fila
+
                 recolector_patron+=str(actual.Dato.valor_binario)+"-"
             actual = actual.siguiente
-        # Agregamos un nuevo patrón, sería el de toda la fila, ej: 0-1-1-1
+
         lista_grupo.agregar_nodo(agrupado(sentinela_de_filas,recolector_patron))
-        # devolvermos la lista llena con los patrones
+
         return lista_grupo
-    """
-    def devolver_cadena_del_grupo(self,grupo):
-        string_resultado=""
-        string_temporal=""
-        buffer=""
-        # viene un parametro llamado grupo, es un string con este formato "1,2"
-        # recorremos caracter por caracter
-        for digito in grupo:
-        #si es digito
-            if digito.isdigit():
-                #añadimos al buffer
-                buffer+=digito
-            else:
-                # si no es buffer, lo vaciamos
-                string_temporal=""
-                #recorremos la lista y recuperamos los valores para este grupo
-                actual = self.primero
-                while actual != None:
-                # si encontramos coincidencia del digito y el nivel , obtenemos su valor
-                    if actual.Dato.posicion_t==int(buffer):
-                        string_temporal+=str(actual.Dato.valor)+","
-                    actual = actual.siguiente
-                string_resultado+=string_temporal+"\n"
-                buffer=""
-        #devolvemos el string resultado
-        return string_resultado
-    """
+
     def devolver_cadena_del_grupo(self,grupo):
             string_resultado=""
             string_temporal=""
             buffer=""
-            # viene un parametro llamado grupo, es un string con este formato "1,2"
-            # recorremos caracter por caracter
+
             for digito in grupo:
-            #si es digito
+
                 if digito.isdigit():
-                    #añadimos al buffer
+
                     buffer+=digito
                 else:
-                    # si no es buffer, lo vaciamos
+
                     string_temporal=""
-                    #recorremos la lista y recuperamos los valores para este grupo
+
                     actual = self.primero
                     while actual != None:
-                        # si encontramos coincidencia del digito y el nivel , obtenemos su valor
+
                         if actual.Dato.posicion_t==int(buffer):
                             string_temporal+=str(actual.Dato.valor)+","
                         actual = actual.siguiente
 
                     string_resultado+=string_temporal+"\n"
                     buffer=""
-            #devolvemos el string resultado
+
             return string_resultado
 
     

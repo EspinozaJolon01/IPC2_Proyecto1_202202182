@@ -24,4 +24,21 @@ class lista_sumando:
         print("--------------------------------------")
 
 
+    def __iter__(self):
+        self.actual = self.primero
+        return self
+
+    def __next__(self):
+        if self.actual is not None:
+            valor_actual = self.actual
+            self.actual = self.actual.siguiente
+            return valor_actual
+        else:
+            raise StopIteration
+
+        
+    
+
+
+
 
