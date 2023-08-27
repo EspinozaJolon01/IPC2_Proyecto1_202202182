@@ -34,7 +34,24 @@ class lista_senal:
 
         if verificar:
                 aux.Senal.lista_datos.generar_grafica(aux.Senal.nombre,str(aux.Senal.amplitud),str(aux.Senal.tiempo),nombre_matriz)
-            #actual.carcel.lista_patrones_celdas.recorrer_e_imprimir_lista()
+                #aux.Senal.lista_sumando.generar_grafica(aux.Senal.nombre,str(aux.Senal.amplitud),str(aux.Senal.tiempo),nombre_matriz)
+                aux=aux.siguiente
+        else:
+            print("no se encontro en la lista")
+
+    def generar_grafia_reducida(self,nombre,nombre_matriz):
+        aux = self.primero
+        verificar = False
+
+        while aux:
+            if aux.Senal.nombre == nombre:
+                verificar = True
+                break
+            aux = aux.siguiente
+
+        if verificar:
+                #aux.Senal.lista_datos.generar_grafica(aux.Senal.nombre,str(aux.Senal.amplitud),str(aux.Senal.tiempo),nombre_matriz)
+                aux.Senal.lista_sumando.generar_grafica(aux.Senal.nombre,str(aux.Senal.amplitud),str(aux.Senal.tiempo),nombre_matriz)
                 aux=aux.siguiente
         else:
             print("no se encontro en la lista")
@@ -83,6 +100,13 @@ class lista_senal:
             #actual.carcel.lista_patrones_celdas.recorrer_e_imprimir_lista()
             actual=actual.siguiente
 
+    # def grafica_mi_lista_reducida(self):
+    #     actual=self.primero
+    #     while actual != None:
+    #         actual.Senal.lista_sumando.generar_grafica(actual.Senal.nombre,str(actual.Senal.amplitud),str(actual.Senal.tiempo))
+    #         #actual.carcel.lista_patrones_celdas.recorrer_e_imprimir_lista()
+    #         actual=actual.siguiente
+
     def eliminar_lista_nodo(self):
         while self.primero:
             aux = self.primero
@@ -93,14 +117,11 @@ class lista_senal:
 
         actual = self.primero
         while actual != None:
-
             if actual.Senal.nombre==nombre:
-
                 actual.Senal.lista_grupo=actual.Senal.lista_datos.devolver_patrones_por_nivel(actual.Senal.lista_grupo)
 
                 listra_grup_temp=actual.Senal.lista_grupo
                 grupos_sin_analizar=listra_grup_temp.encontrar_coincidencias()
-
                 buffer=""
                 for digito in grupos_sin_analizar:
                     if digito.isdigit() or digito==",":
@@ -114,6 +135,8 @@ class lista_senal:
                         buffer=""
                     else:
                         buffer=""
+                
+                actual.Senal.listra_patrones.recorrer_e_imprimir_lista()
                 return
             actual=actual.siguiente
         print ("No se encontró la carcel")
@@ -131,10 +154,11 @@ class lista_senal:
                     contador += 1
                     if contador == len(tiempo_sin_comas):
                         string_resultado+=str(suma)+","
-                        lista_suma.insertar_dato(dato_sumado(datos_lista.Dato.posicion_A,datos_lista.Dato.posicion_t,suma,num_grupo))
-                
+                        lista_suma.insertar_dato(dato_sumado(datos_lista.Dato.posicion_A,grupo,suma,num_grupo))    
             contador = 0
             suma = 0
+        lista_suma.recorrer()
+
 
 
     def actualizar_tem(self,lista_temporal_suma,nombre):
@@ -151,13 +175,10 @@ class lista_senal:
         aux = self.primero
 
         while aux:
-
         # Crear el elemento senal con atributos nombre y A
             senal = ET.SubElement(senales_reducidas, "senal", nombre=f"{aux.Senal.nombre}", A=f"{aux.Senal.amplitud}")
             num_gruposv = aux.Senal.listra_patrones
-
             # Crear grupos dentro de la sena
-            
             for g in num_gruposv:
                 grupo = ET.SubElement(senal, "grupo",g=f"{g.patron.num_grupos}" )
                 tiempos = ET.SubElement(grupo, "tiempos"  )

@@ -66,7 +66,8 @@ class app:
             nombre_de_grafica = input("Ingrese el nombre que quiere guarda la matriz: ")
             lecturas.generar_grafica(nombre,nombre_de_grafica)
         elif opcion == 2:
-            print("opcion")
+            nombre_de_grafica_reducida = input("Ingrese el nombre que quiere guarda la matriz: ")
+            lecturas.generar_reducida_reducida(nombre,nombre_de_grafica_reducida)
         else:
             print("opcion no valida")
         
@@ -86,6 +87,9 @@ class app:
     
     def prueba_grafica(self):
         lecturas.grafica_sumados()
+
+    def grafica_reducida(self):
+        lecturas.generar_grafica_reducida()
     
     def prueba_calcular_matriz3(self):
         #lista_sum.recorrer()

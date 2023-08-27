@@ -1,0 +1,26 @@
+
+            digraph G {"Amplitud=4"->" Prueba 1" bgcolor="skyblue" style="filled"
+            subgraph cluster1 {fillcolor="blue:blue4" style="filled"
+            node [ fillcolor="Cyan:Teal" style="radial" gradientangle=180]
+            a0 [ label=<
+            <TABLE border="10" cellspacing="10" cellpadding="10" style="rounded" bgcolor="navy:darkblue" gradientangle="315">
+<TR><TD border="3"  bgcolor="lavender" gradientangle="315">Grupo=1 t=1,3,6,</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">6</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">8</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">0</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">7</TD>
+</TR>
+<TR><TD border="3"  bgcolor="lavender" gradientangle="315">Grupo=2 t=2,5,</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">0</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">0</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">9</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">4</TD>
+</TR>
+<TR><TD border="3"  bgcolor="lavender" gradientangle="315">Grupo=3 t=4,</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">1</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">0</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">1</TD>
+<TD border="3"  bgcolor="lavender" gradientangle="315">5</TD>
+ </TR></TABLE>>];
+                }
+                }
