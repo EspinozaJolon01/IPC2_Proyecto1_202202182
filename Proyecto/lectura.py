@@ -10,9 +10,6 @@ from lista_sumado import lista_sumando
 
 
 
-
-
-
 class lectura:
 
     def __init__(self) :
@@ -74,10 +71,13 @@ class lectura:
                                 self.lista_datos_temp.insertar_datos(dato_encontrado)
                                 
                                 
+                                
                         self.lista_senal_temp.actualizar_matriz(nombre)
                         self.lista_senal_temp.insertar_dato(Senal(nombre,tiempo,amplitud,self.lista_datos_temp,lista_temporal_grupos,lista_temporal_patrones,lista_temporal_suma))
                         self.lista_senal_temp.calcular_los_patrones(nombre,lista_temporal_suma)
                         self.lista_senal_temp.actualizar_tem(lista_temporal_suma,nombre)
+                        print("-> Realizando matriz reducida...")
+                        print("-> Relizando matgriz binaria...")
                         #self.lista_senal_temp.recorrer_e_imprimir_listas()
                         #self.agregar_cadena(tiempo,self.lista_datos_temp)
                         

@@ -65,6 +65,7 @@ class lista_senal:
             if aux.Senal.nombre == nombre:
                 if dato is None:
                     self.primero = aux.siguiente
+                    print("Se actualizo....")
                 else:
                     dato.siguiente = aux.siguiente  #realizamos la eliminacion
                     print("Se actualizo....")
@@ -136,7 +137,7 @@ class lista_senal:
                     else:
                         buffer=""
                 
-                actual.Senal.listra_patrones.recorrer_e_imprimir_lista()
+                #actual.Senal.listra_patrones.recorrer_e_imprimir_lista()
                 return
             actual=actual.siguiente
         print ("No se encontró la carcel")
@@ -157,9 +158,7 @@ class lista_senal:
                         lista_suma.insertar_dato(dato_sumado(datos_lista.Dato.posicion_A,grupo,suma,num_grupo))    
             contador = 0
             suma = 0
-        lista_suma.recorrer()
-
-
+        #lista_suma.recorrer()
 
     def actualizar_tem(self,lista_temporal_suma,nombre):
         aux = self.primero
@@ -176,6 +175,7 @@ class lista_senal:
 
         while aux:
         # Crear el elemento senal con atributos nombre y A
+            
             senal = ET.SubElement(senales_reducidas, "senal", nombre=f"{aux.Senal.nombre}", A=f"{aux.Senal.amplitud}")
             num_gruposv = aux.Senal.listra_patrones
             # Crear grupos dentro de la sena
@@ -188,6 +188,7 @@ class lista_senal:
                 dato_grupos = aux.Senal.lista_sumando
                 for d in dato_grupos:
                     if d.dato_sumado.num_grupo == g.patron.num_grupos:
+
                         dato = ET.SubElement(datos_gru, "dato", A=f"{d.dato_sumado.amplitud}")
                         dato.text = str(d.dato_sumado.valor_resultado)
                     #dato.text = str((g + d) % 10)
