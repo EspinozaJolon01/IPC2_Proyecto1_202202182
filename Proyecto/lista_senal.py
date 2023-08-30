@@ -144,16 +144,20 @@ class lista_senal:
 
     def realizar_suma(self, lista_datos, amplitud, grupo,num_grupo,lista_suma):
         suma = 0
-
         contador = 0
         string_resultado = ""
+        
         tiempo_sin_comas = grupo.replace(",","")
+        
+        contador_comas = grupo.count(',')
         for i in range(1, int(amplitud)+1):
             for datos_lista in lista_datos:
-                if str(datos_lista.Dato.posicion_t) in grupo and int(datos_lista.Dato.posicion_A) == i:
+                if self.analizar(str(datos_lista.Dato.posicion_t),grupo) and int(datos_lista.Dato.posicion_A) == i:
+                    #print(int(datos_lista.Dato.posicion_A),"=", i)
                     suma = suma + int(datos_lista.Dato.valor)
+                    
                     contador += 1
-                    if contador == len(tiempo_sin_comas):
+                    if contador == contador_comas:
                         string_resultado+=str(suma)+","
                         lista_suma.insertar_dato(dato_sumado(datos_lista.Dato.posicion_A,grupo,suma,num_grupo))    
             contador = 0
@@ -167,6 +171,20 @@ class lista_senal:
                 aux.Senal.lista_sumando = lista_temporal_suma
                 return
             aux = aux.siguiente
+
+    def analizar(self,analizar_tiempo,tiempos):
+        ini = 0
+        stop = 0
+        while stop <= len(tiempos):
+            if stop == len(tiempos) or tiempos[stop] == ',':
+                tiempo_actual = tiempos[ini:stop]
+                if tiempo_actual == analizar_tiempo:
+                    return True
+                ini = stop + 1
+            stop += 1
+        return False
+
+
 
     def generar_archivo_xml(self,nombre):
         # Crear el elemento raíz

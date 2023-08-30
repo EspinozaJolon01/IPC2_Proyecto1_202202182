@@ -76,8 +76,12 @@ class lectura:
                         self.lista_senal_temp.insertar_dato(Senal(nombre,tiempo,amplitud,self.lista_datos_temp,lista_temporal_grupos,lista_temporal_patrones,lista_temporal_suma))
                         self.lista_senal_temp.calcular_los_patrones(nombre,lista_temporal_suma)
                         self.lista_senal_temp.actualizar_tem(lista_temporal_suma,nombre)
-                        print("-> Realizando matriz reducida...")
-                        print("-> Relizando matgriz binaria...")
+                        print("->Realizando matriz normal...")
+                        print("-> Relizando matriz binaria...")
+                        print("->Realizando los grupos...")
+                        print("-> Realizando las sumas...")
+                        print("->> Realizada la matriz reducida")
+                        
                         #self.lista_senal_temp.recorrer_e_imprimir_listas()
                         #self.agregar_cadena(tiempo,self.lista_datos_temp)
                         
