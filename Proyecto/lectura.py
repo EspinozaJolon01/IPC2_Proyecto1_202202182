@@ -163,6 +163,9 @@ class lectura:
 
     def generar_reducida_reducida(self,nombre,nombre_de_grafica):
         self.lista_senal_temp.generar_grafia_reducida(nombre,nombre_de_grafica)
+
+    def generar_reducida_patron(self,nombre,nombre_de_grafica):
+        self.lista_senal_temp.generar_grafia_pratones(nombre,nombre_de_grafica)
     
     def eliminar_lista(self):
         self.lista_senal_temp.eliminar_lista_nodo()

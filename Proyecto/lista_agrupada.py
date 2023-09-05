@@ -55,26 +55,26 @@ class lista_agrupada:
 
     def encontrar_coincidencias(self):
         print("")
-        resultado = ""  # Inicializa un string vacío para almacenar el resultado final  
-        # Bucle principal que se ejecuta mientras haya nodos en la lista
+        resultado = ""  
+        
         while self.primero:
-            actual = self.primero  # Comienza desde el primer nodo en la lista
-            temp_string = ""  # String temporal para almacenar niveles coincidentes
-            temp_niveles = ""  # Lista temporal para almacenar niveles      
-        # Bucle interno para recorrer la lista de nodos y buscar coincidencias
+            actual = self.primero  
+            temp_string = ""  
+            temp_niveles = ""  
+        
         
             while actual:
                 if actual.agrupado.patron == self.primero.agrupado.patron:
-                    temp_niveles+=(str(actual.agrupado.tiempo))+","  # Agrega el nivel a la lista temporal
-                # Si no hay nodo siguiente, elimina el primer nodo
+                    temp_niveles+=(str(actual.agrupado.tiempo))+","  
+                
                 actual=actual.siguiente
-            # Terminamos la iteración, quiere decir que ya tenemos la coincidencias:
+            
             buffer=""
-            #print(temp_niveles)
+            
             for digito in temp_niveles:
                 if digito.isdigit():
                     buffer+=digito
-                #Quiere decir que viene una coma
+                
                 else:
                     if buffer!="":
                         self.eliminar(int(buffer))
@@ -82,7 +82,7 @@ class lista_agrupada:
                     else:
                         buffer=""
             resultado+=temp_niveles+"--"
-        return resultado  # Devuelve el resultado final con la agrupación de niveles
+        return resultado  
 
     
         

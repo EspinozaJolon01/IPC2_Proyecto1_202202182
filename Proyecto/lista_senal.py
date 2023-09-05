@@ -39,6 +39,24 @@ class lista_senal:
         else:
             print("no se encontro en la lista")
 
+
+    def generar_grafia_pratones(self,nombre,nombre_matriz):
+        aux = self.primero
+        verificar = False
+
+        while aux:
+            if aux.Senal.nombre == nombre:
+                verificar = True
+                break
+            aux = aux.siguiente
+
+        if verificar:
+                aux.Senal.lista_datos.generar_grafica_praton(aux.Senal.nombre,str(aux.Senal.amplitud),str(aux.Senal.tiempo),nombre_matriz)
+                #aux.Senal.lista_sumando.generar_grafica(aux.Senal.nombre,str(aux.Senal.amplitud),str(aux.Senal.tiempo),nombre_matriz)
+                aux=aux.siguiente
+        else:
+            print("no se encontro en la lista")
+
     def generar_grafia_reducida(self,nombre,nombre_matriz):
         aux = self.primero
         verificar = False

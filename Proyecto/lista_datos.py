@@ -84,6 +84,47 @@ class lista_datos:
         print("terminado")
     
 
+    def generar_grafica_praton(self,nombre,amplitud,tiempo,nombre_matriz):
+        f = open('bb.dot','w')
+
+        text ="""
+            digraph G {"Amplitud="""+amplitud+"""","Tiempo="""+tiempo+""""->" """+nombre+ """" bgcolor="skyblue" style="filled"
+            subgraph cluster1 {fillcolor="blue:blue4" style="filled"
+            node [ fillcolor="Cyan:Teal" style="radial" gradientangle=180]
+            a0 [ label=<
+            <TABLE border="10" cellspacing="10" cellpadding="10" style="rounded" bgcolor="navy:darkblue" gradientangle="315">\n"""
+        aux = self.primero
+        sentinela_de_filas=aux.Dato.posicion_t 
+        fila_iniciada=False
+        while aux != None:
+
+            if sentinela_de_filas!=aux.Dato.posicion_t:
+
+                sentinela_de_filas=aux.Dato.posicion_t
+                fila_iniciada=False
+
+                text+="""</TR>\n"""  
+            if fila_iniciada==False:
+                fila_iniciada=True
+
+                text+="""<TR>"""  
+                text+="""<TD border="3"  bgcolor="lavender" gradientangle="315">"""+str(aux.Dato.valor_binario)+"""</TD>\n"""
+            else:
+                text+="""<TD border="3"  bgcolor="lavender" gradientangle="315">"""+str(aux.Dato.valor_binario)+"""</TD>\n"""
+            aux = aux.siguiente
+        text+=""" </TR></TABLE>>];
+                }
+                }\n"""
+        
+        f.write(text)
+        f.close()
+        os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin'
+        os.system(f"dot -Tpng bb.dot -o {nombre_matriz}.png")
+        print("terminado")
+
+    
+    
+
     def devolver_patrones_por_nivel(self,lista_grupo):
         actual = self.primero
         sentinela_de_filas=actual.Dato.posicion_t 
